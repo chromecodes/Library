@@ -57,6 +57,17 @@ function showBook(){
 
   card.appendChild(lineThree);
 
+  const delBtn = document.createElement('button');
+  delBtn.classList.add('delete')
+
+  card.appendChild(delBtn);
+
+
+  const readed = document.createElement('input');
+  readed.classList.add('readed')
+
+  card.appendChild(delBtn);
+
   shelf.appendChild(card);
 }
 

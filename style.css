@@ -51,9 +51,17 @@ header {
   border: 2px solid black;
   width: 220px;
   height: 270px;
-  padding: 20px 10px;
+  padding-top: 20px;
   position: relative;
   box-shadow: 8px 2px 0px 1px blue;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 3fr 1fr 1fr 1fr;
+  grid-template-areas:
+    "title title title"
+    "author author author"
+    "pages pages pages"
+    " delete .  status";
 }
 .close {
   text-align: center;
@@ -69,7 +77,59 @@ header {
 }
 .l-one {
   font-size: 22px;
+  grid-area: title;
+  padding-left: 10px;
 }
 .l-two {
   font-size: 14px;
+  grid-area: author;
+  padding-left: 10px;
+}
+.l-three {
+  grid-area: pages;
+  padding-left: 10px;
+}
+.delete {
+  grid-area: delete;
+  align-self: end;
+  border: none;
+  width: 45px;
+  height: 45px;
+  border-radius: 0 25px 0 0;
+}
+
+.delete::before {
+  padding: 7px 7px 0 0;
+  display: inline-block;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font: var(--fa-font-solid);
+  content: "\f2ed";
+  font-weight: 400;
+  font-size: 22px;
+  cursor: pointer;
+}
+.read-bg {
+  grid-area: status;
+  width: 45px;
+  height: 45px;
+  border-radius: 0 25px 0 0;
+}
+.read::before {
+  display: inline-block;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font: var(--fa-font-solid);
+  content: "\f058";
+  font-weight: 400;
+  font-size: 22px;
+  cursor: pointer;
+  color: gray;
+  align-self: end;
+  width: 45px;
+  height: 45px;
+  border-radius: 0 25px 0 0;
+}
+
+input[type="checkbox"] {
 }

@@ -8,7 +8,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <title>Library</title>
     <link rel="stylesheet" href="normalize.css">
@@ -33,6 +35,9 @@
                     </svg></div>
                 <div class="l-two">Marcel Proust's </div>
                 <div class="l-three">15,000 </div>
+                <button class="delete"></button>
+                <div class="read-bg"><label for="read" class="read"><input type="checkbox" id="read"></label></div>
+
             </div>
         </div>
 
@@ -45,6 +50,7 @@
                     <input class="input" type="text" id="title" name="title" placeholder="title">
                     <input class="input" type="text" id="author" name="author" placeholder="author">
                     <input class="input" type="number" id="pages" name="pages" placeholder="pages">
+
                     <button id="add" type="submit"> + add </button>
                 </div>
             </div>
