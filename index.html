@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+
 
     <title>Library</title>
     <link rel="stylesheet" href="normalize.css">
@@ -19,23 +23,32 @@
     </header>
     <main>
         <div class="shelf" id="shelf">
-
+            <div class="card">
+                <div class="l-one">Marcel Proust's elephantine Remembrance of Things Past</div>
+                <div class="close"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="12" height="12"
+                        viewBox="0 0 24 24" style=" fill:#000000;">
+                        <path
+                            d="M 4.9902344 3.9902344 A 1.0001 1.0001 0 0 0 4.2929688 5.7070312 L 10.585938 12 L 4.2929688 18.292969 A 1.0001 1.0001 0 1 0 5.7070312 19.707031 L 12 13.414062 L 18.292969 19.707031 A 1.0001 1.0001 0 1 0 19.707031 18.292969 L 13.414062 12 L 19.707031 5.7070312 A 1.0001 1.0001 0 0 0 18.980469 3.9902344 A 1.0001 1.0001 0 0 0 18.292969 4.2929688 L 12 10.585938 L 5.7070312 4.2929688 A 1.0001 1.0001 0 0 0 4.9902344 3.9902344 z">
+                        </path>
+                    </svg></div>
+                <div class="l-two">Marcel Proust's </div>
+                <div class="l-three">15,000 </div>
+            </div>
         </div>
 
+        <button id="modalOpen"> + add book </button>
 
-
-
-        <label for="title">title
-            <input type="text" id="title" name="title">
-        </label>
-        <label for="author">author
-            <input type="text" id="author" name="author">
-        </label>
-        <label for="pages">pages
-            <input type="number" id="pages" name="pages">
-        </label>
-        <button id="add">add</button>
-
+        <div id="modal" class="modal">
+            <div id="modalWrapper" class="modalWrapper">
+                <div class="modal-content">
+                    <div class="modalTitle"> Add a new Book </div>
+                    <input class="input" type="text" id="title" name="title" placeholder="title">
+                    <input class="input" type="text" id="author" name="author" placeholder="author">
+                    <input class="input" type="number" id="pages" name="pages" placeholder="pages">
+                    <button id="add" type="submit"> + add </button>
+                </div>
+            </div>
+        </div>
 
     </main>
     <footer> </footer>
