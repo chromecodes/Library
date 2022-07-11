@@ -1,12 +1,133 @@
 body {
-  background-color: aliceblue;
   font-family: "Poppins", sans-serif;
-  padding: 20px;
+  background: #e2e8f0;
 }
 header {
   font-size: 28px;
-  padding-bottom: 25px;
+  padding: 20px;
+  border-bottom: 1px solid black;
+  background-color: white;
 }
+main {
+  padding: 20px;
+  background: #e2e8f0;
+}
+
+.card {
+  border: 2px solid black;
+  background-color: #fff;
+  width: 220px;
+  height: 270px;
+  padding-top: 20px;
+  position: relative;
+  box-shadow: 4px 2px 2px 1px #d4d4d4;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 3fr 1fr 1fr 1fr;
+  grid-template-areas:
+    "title title title"
+    "author author author"
+    "pages pages pages"
+    " delete .  status";
+}
+
+.l-one {
+  font-size: 22px;
+  grid-area: title;
+  padding-left: 10px;
+}
+.l-two {
+  font-size: 14px;
+  grid-area: author;
+  padding-left: 10px;
+}
+.l-three {
+  grid-area: pages;
+  padding-left: 10px;
+}
+.delete {
+  grid-area: delete;
+  align-self: end;
+  border: none;
+  width: 45px;
+  height: 45px;
+  border-radius: 0 25px 0 0;
+  background-color: #f1f5f9;
+}
+
+.delete::before {
+  padding: 7px 7px 0 0;
+  display: inline-block;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font: var(--fa-font-solid);
+  content: "\f2ed";
+  font-weight: 400;
+  font-size: 22px;
+  cursor: pointer;
+  color: #cbd5e1;
+}
+.delete:hover::before {
+  color: #ef4444;
+}
+
+.delete:hover {
+  background-color: #fca5a5;
+}
+
+.read-bg {
+  grid-area: status;
+  width: 45px;
+  height: 45px;
+  border-radius: 0 25px 0 0;
+  align-self: end;
+  justify-self: end;
+}
+.read {
+  display: flex;
+  width: 45px;
+  height: 45px;
+  align-items: flex-end;
+  justify-content: end;
+  background-color: inherit;
+  border-radius: 25px 0 0 0;
+}
+.read::before {
+  display: inline-block;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font: var(--fa-font-solid);
+  content: "\f058";
+  font-weight: 400;
+  font-size: 22px;
+  cursor: pointer;
+  color: inherit;
+  align-self: end;
+  padding: 0 8px 8px 0;
+}
+
+.read input[type="checkbox"] {
+  display: inline;
+}
+
+#read:checked + .read {
+  background-color: #bef264;
+}
+.read:hover::before {
+  color: #84cc16;
+}
+.read:hover {
+  background-color: #bef264;
+}
+.read-bg {
+  border-radius: 25px 0 0 0;
+  background-color: #f1f5f9;
+  color: #cbd5e1;
+}
+.read-bg input[type="checkbox"]:checked .read-bg {
+  display: none;
+}
+
 .modal {
   display: none;
   position: fixed;
@@ -46,90 +167,4 @@ header {
 }
 .active {
   display: block;
-}
-.card {
-  border: 2px solid black;
-  width: 220px;
-  height: 270px;
-  padding-top: 20px;
-  position: relative;
-  box-shadow: 8px 2px 0px 1px blue;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 3fr 1fr 1fr 1fr;
-  grid-template-areas:
-    "title title title"
-    "author author author"
-    "pages pages pages"
-    " delete .  status";
-}
-.close {
-  text-align: center;
-  padding-top: 2px;
-  position: absolute;
-  background-color: gainsboro;
-  width: 20px;
-  height: 18px;
-  border: 2px solid gainsboro;
-  top: 15px;
-  right: 15px;
-  border-radius: 100px;
-}
-.l-one {
-  font-size: 22px;
-  grid-area: title;
-  padding-left: 10px;
-}
-.l-two {
-  font-size: 14px;
-  grid-area: author;
-  padding-left: 10px;
-}
-.l-three {
-  grid-area: pages;
-  padding-left: 10px;
-}
-.delete {
-  grid-area: delete;
-  align-self: end;
-  border: none;
-  width: 45px;
-  height: 45px;
-  border-radius: 0 25px 0 0;
-}
-
-.delete::before {
-  padding: 7px 7px 0 0;
-  display: inline-block;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  font: var(--fa-font-solid);
-  content: "\f2ed";
-  font-weight: 400;
-  font-size: 22px;
-  cursor: pointer;
-}
-.read-bg {
-  grid-area: status;
-  width: 45px;
-  height: 45px;
-  border-radius: 0 25px 0 0;
-}
-.read::before {
-  display: inline-block;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  font: var(--fa-font-solid);
-  content: "\f058";
-  font-weight: 400;
-  font-size: 22px;
-  cursor: pointer;
-  color: gray;
-  align-self: end;
-  width: 45px;
-  height: 45px;
-  border-radius: 0 25px 0 0;
-}
-
-input[type="checkbox"] {
 }
