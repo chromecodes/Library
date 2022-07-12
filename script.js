@@ -110,11 +110,16 @@ function showBook(){
 
   delBtn.addEventListener("click", function(e) {
     item = e.target.dataset.index
+    removeBook(event)
+  });
+  delBtn.addEventListener("click", function(e) {
+    item = e.target.dataset.index
     removeBook(item)
   });
 }
 
-function removeBook(item){
+function removeBook(e){
+  event.stopPropagation();
   console.log(item);
   console.log(myLibrary);
   myLibrary.splice(myLibrary.indexOf(item),1);
@@ -128,7 +133,6 @@ function removeBook(item){
 }
 
 function checkSts(){
-  
   if(myLibrary[n] == true){
     t
   }
@@ -137,17 +141,7 @@ function checkSts(){
 function modalCtrl (){
   modal.classList.toggle('active');             
 }
-/*
-function assign(){
-const removes = document.querySelectorAll('.delete')
-removes.forEach((remove) =>  {remove.addEventListener("click", function(e) {
-      item = e.target.dataset.index
-      removeBook(item)
-  }) 
-});
-}
 
-*/
  modalOpen.addEventListener("click", modalCtrl )
  window.addEventListener("click", function(event) {
   if (event.target == modal || event.target == modalWrapper ) {
@@ -155,10 +149,9 @@ removes.forEach((remove) =>  {remove.addEventListener("click", function(e) {
   }
 });
 
-
 AddBtn.addEventListener( "click", getBook );
+
 for(let i = 0; i < myLibrary.length; i++ ){
   n = i;
   showBook();
 }
-//assign();

@@ -12,7 +12,11 @@ main {
   padding: 20px;
   background: #e2e8f0;
 }
-
+.shelf {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 225px);
+  grid-gap: 15px;
+}
 .card {
   border: 2px solid black;
   background-color: #fff;
@@ -53,6 +57,7 @@ main {
   height: 45px;
   border-radius: 0 25px 0 0;
   background-color: #f1f5f9;
+  cursor: pointer;
 }
 
 .delete::before {
@@ -124,7 +129,7 @@ main {
   background-color: #f1f5f9;
   color: #cbd5e1;
 }
-.read-bg input[type="checkbox"]:checked .read-bg {
+.read-bg input[type="checkbox"] {
   display: none;
 }
 .readed {
@@ -154,7 +159,7 @@ main {
   height: 50%;
   width: 250px;
   border-radius: 10px;
-  background-color: aqua;
+  background-color: whitesmoke;
   display: flex;
   flex-direction: column;
   align-items: center;
