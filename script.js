@@ -2,11 +2,32 @@ const modal = document.getElementById("modal");
 const modalWrapper = document.getElementById("modalWrapper");
 const modalOpen = document.getElementById("modalOpen");
 const AddBtn= document.getElementById("add");
+const shelf = document.getElementById("shelf");
 
 
+let myLibrary = [ 
+  {
+    title: 'A Game ',
+    author: 'George R. R. Martin',
+    pages: '694',
+    status: true,
+  },
+  {
+    title: ' of Thrones ',
+    author: 'George R. R. Martin',
+    pages: '694',
+    status: true,
+  },
+  {
+    title: 'A Game of Thrones ',
+    author: 'George R. R. Martin',
+    pages: '694',
+    status: true,
+  }
+];
 
-let myLibrary = [];
 n = myLibrary.length 
+
 
 function Book(title, author, pages, status) {
   this.title = title;
@@ -22,6 +43,7 @@ const pages = document.getElementById("pages");
 const status = document.getElementById("readSts");
 
 myLibrary[n] = new Book(title.value, author.value, pages.value, status.checked) ;
+
 showBook();
 n++;
 title.value = "", author.value="", pages.value="",status.checked=false;
@@ -29,10 +51,11 @@ modalCtrl();
 }
 
 function showBook(){
-  const shelf = document.getElementById("shelf");
-  
+ 
+
   const card = document.createElement('div');
   card.classList.add('card');
+  card.setAttribute('data-index', n )
   
   const lineOne = document.createElement('div');
   lineOne.classList.add('l-one');
@@ -54,6 +77,7 @@ function showBook(){
 
   const delBtn = document.createElement('button');
   delBtn.classList.add('delete');
+  delBtn.setAttribute('data-index', n )
 
   card.appendChild(delBtn);
 
@@ -83,22 +107,47 @@ function showBook(){
   card.appendChild(stateBg);
 
   shelf.appendChild(card);
+
+  delBtn.addEventListener("click", function(e) {
+    item = e.target.dataset.index
+    removeBook(item)
+  });
 }
+
+function removeBook(item){
+  console.log(item);
+  console.log(myLibrary);
+  myLibrary.splice(myLibrary.indexOf(item),1);
+  console.log(myLibrary);
+  console.log(shelf);
+  let card = document.querySelector(`[data-index="${item}"]`)
+  shelf.removeChild(card);
+  console.log(shelf);
+  n = myLibrary.length 
+
+}
+
 function checkSts(){
+  
   if(myLibrary[n] == true){
     t
   }
 }
+
 function modalCtrl (){
   modal.classList.toggle('active');             
 }
+/*
+function assign(){
+const removes = document.querySelectorAll('.delete')
+removes.forEach((remove) =>  {remove.addEventListener("click", function(e) {
+      item = e.target.dataset.index
+      removeBook(item)
+  }) 
+});
+}
 
- const state = document.getElementById('read-bg')
-
-state.addEventListener("click", function(e) {
-  console.log(e)
-})
-
+*/
  modalOpen.addEventListener("click", modalCtrl )
  window.addEventListener("click", function(event) {
   if (event.target == modal || event.target == modalWrapper ) {
@@ -108,3 +157,8 @@ state.addEventListener("click", function(e) {
 
 
 AddBtn.addEventListener( "click", getBook );
+for(let i = 0; i < myLibrary.length; i++ ){
+  n = i;
+  showBook();
+}
+//assign();

@@ -127,6 +127,10 @@ main {
 .read-bg input[type="checkbox"]:checked .read-bg {
   display: none;
 }
+.readed {
+  color: #84cc16;
+  background-color: #bef264;
+}
 
 .modal {
   display: none;
