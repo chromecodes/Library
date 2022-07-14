@@ -111,18 +111,9 @@ main {
   padding: 0 8px 8px 0;
 }
 
-.read input[type="checkbox"] {
-  display: inline;
-}
-
-#read:checked + .read {
+.read-bg:hover {
   background-color: #bef264;
-}
-.read:hover::before {
   color: #84cc16;
-}
-.read:hover {
-  background-color: #bef264;
 }
 .read-bg {
   border-radius: 25px 0 0 0;

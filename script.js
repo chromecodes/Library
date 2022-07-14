@@ -10,7 +10,7 @@ let myLibrary = [
     title: 'A Game ',
     author: 'George R. R. Martin',
     pages: '694',
-    status: true,
+    status: false,
   },
   {
     title: ' of Thrones ',
@@ -22,7 +22,7 @@ let myLibrary = [
     title: 'A Game of Thrones ',
     author: 'George R. R. Martin',
     pages: '694',
-    status: true,
+    status: false,
   }
 ];
 
@@ -46,7 +46,7 @@ myLibrary[n] = new Book(title.value, author.value, pages.value, status.checked) 
 
 showBook();
 n++;
-title.value = "", author.value="", pages.value="",status.checked=false;
+title.value = "", author.value="", pages.value="", status.checked=false;
 modalCtrl();
 }
 
@@ -78,26 +78,19 @@ function showBook(){
   const delBtn = document.createElement('button');
   delBtn.classList.add('delete');
   delBtn.setAttribute('data-index', n )
-
   card.appendChild(delBtn);
-
-
-  const readed = document.createElement('input');
-  readed.classList.add('readed');
-
-  card.appendChild(delBtn);
-
   
   const stateBg = document.createElement('div');
   stateBg.classList.add('read-bg');
+  stateBg.setAttribute('data-index', n )
 
- 
   const stateFor = document.createElement('label');
-  stateFor.setAttribute('for', 'read')
+  stateFor.setAttribute('for', 'read');
   stateFor.classList.add('read');
+  stateFor.setAttribute('data-index', n )
 
   const state = document.createElement('input');
-  state.setAttribute('type', 'checkbox')
+  state.setAttribute('type', 'checkbox');
   state.setAttribute('id','read');
   
   stateFor.appendChild(state);
@@ -109,17 +102,18 @@ function showBook(){
   shelf.appendChild(card);
 
   delBtn.addEventListener("click", function(e) {
+    e.stopPropogation()
     item = e.target.dataset.index
-    removeBook(event)
+    removeBook();
   });
-  delBtn.addEventListener("click", function(e) {
-    item = e.target.dataset.index
-    removeBook(item)
+  stateBg.addEventListener("click", function(e) {
+   console.log(e.target.dataset.index); 
+  // readSts();
+
   });
 }
 
-function removeBook(e){
-  event.stopPropagation();
+function removeBook(){
   console.log(item);
   console.log(myLibrary);
   myLibrary.splice(myLibrary.indexOf(item),1);
@@ -132,9 +126,17 @@ function removeBook(e){
 
 }
 
-function checkSts(){
-  if(myLibrary[n] == true){
-    t
+function readSts(){
+  console.log(item);
+  console.log(myLibrary[item].status);
+  if(myLibrary.indexOf(item).status == false){
+    myLibrary[item].status  = true;
+    stateBg.classList.add('readed')
+    console.log(myLibrary[item].status);
+  } else if (myLibrary.indexOf(item).status == true){
+    myLibrary.indexOf(item).status   = false;
+    stateBg.classList.remove('readed')
+    console.log(myLibrary[item].status);
   }
 }
 
