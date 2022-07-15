@@ -24,11 +24,13 @@
 
     </header>
     <main>
+
         <div class="shelf" id="shelf">
+            <button id="modalOpen" class="modalOpen"> + </button>
 
         </div>
 
-        <button id="modalOpen"> + add book </button>
+
 
         <div id="modal" class="modal">
             <div id="modalWrapper" class="modalWrapper">
@@ -37,8 +39,9 @@
                     <input class="input" type="text" id="title" name="title" placeholder="title">
                     <input class="input" type="text" id="author" name="author" placeholder="author">
                     <input class="input" type="number" id="pages" name="pages" placeholder="pages">
-                    <label for="readSts"> Have you read it? <input type="checkbox" id="readSts" name="status"></label>
-                    <button id="add" type="submit"> + add </button>
+                    <label for="readSts" class="checkLable"> Have you read it? <input type="checkbox" id="readSts"
+                            name="status" class="checkBox"></label>
+                    <button id="add" type="submit" class="modalAdd"> ADD </button>
                 </div>
             </div>
         </div>

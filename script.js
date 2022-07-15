@@ -7,26 +7,13 @@ const shelf = document.getElementById("shelf");
 
 let myLibrary = [ 
   {
-    title: 'A Game ',
-    author: 'George R. R. Martin',
-    pages: '694',
-    status: false,
-  },
-  {
-    title: ' of Thrones ',
-    author: 'George R. R. Martin',
-    pages: '694',
-    status: true,
-  },
-  {
     title: 'A Game of Thrones ',
     author: 'George R. R. Martin',
     pages: '694',
-    status: false,
+    status: true,
   }
 ];
 
-n = myLibrary.length 
 
 
 function Book(title, author, pages, status) {
@@ -51,7 +38,6 @@ modalCtrl();
 }
 
 function showBook(){
- 
 
   const card = document.createElement('div');
   card.classList.add('card');
@@ -79,14 +65,11 @@ function showBook(){
   delBtn.classList.add('delete');
   delBtn.setAttribute('data-index', n )
   card.appendChild(delBtn);
-  
-  const stateBg = document.createElement('div');
-  stateBg.classList.add('read-bg');
-  stateBg.setAttribute('data-index', n )
 
   const stateFor = document.createElement('label');
   stateFor.setAttribute('for', 'read');
   stateFor.classList.add('read');
+  stateFor.setAttribute('id',`read${n}` )
   stateFor.setAttribute('data-index', n )
 
   const state = document.createElement('input');
@@ -95,48 +78,56 @@ function showBook(){
   
   stateFor.appendChild(state);
 
-  stateBg.appendChild(stateFor);
-
-  card.appendChild(stateBg);
+  card.appendChild(stateFor);
 
   shelf.appendChild(card);
 
   delBtn.addEventListener("click", function(e) {
-    e.stopPropogation()
-    item = e.target.dataset.index
+    e.preventDefault()
+    item = e.target.dataset.index;
     removeBook();
   });
-  stateBg.addEventListener("click", function(e) {
-   console.log(e.target.dataset.index); 
-  // readSts();
-
+  stateFor.addEventListener("click", function(e) {
+    e.preventDefault()
+    item = e.target.dataset.index; 
+    readSts();
   });
+  chkReadSts()
 }
 
 function removeBook(){
-  console.log(item);
-  console.log(myLibrary);
   myLibrary.splice(myLibrary.indexOf(item),1);
-  console.log(myLibrary);
-  console.log(shelf);
   let card = document.querySelector(`[data-index="${item}"]`)
   shelf.removeChild(card);
-  console.log(shelf);
   n = myLibrary.length 
-
 }
 
 function readSts(){
-  console.log(item);
-  console.log(myLibrary[item].status);
-  if(myLibrary.indexOf(item).status == false){
+  const readStuTarget = document.getElementById(`read${item}`)
+  if(myLibrary[item].status == false){
     myLibrary[item].status  = true;
-    stateBg.classList.add('readed')
-    console.log(myLibrary[item].status);
-  } else if (myLibrary.indexOf(item).status == true){
-    myLibrary.indexOf(item).status   = false;
-    stateBg.classList.remove('readed')
-    console.log(myLibrary[item].status);
+    readStuTarget.classList.add('readed');
+  } else if (myLibrary[item].status == true){
+    myLibrary[item].status  = false;
+    readStuTarget.classList.remove('readed');
+  }
+}
+
+function intilize() {
+  for(let i = 0; i < myLibrary.length; i++ ){
+    n = i;
+    showBook();
+    chkReadSts()
+    n = myLibrary.length ;
+  }
+}
+
+function chkReadSts(){
+  const readStuTarget = document.getElementById(`read${n}`)
+  if(myLibrary[n].status == true){
+    readStuTarget.classList.add('readed');
+  } else if (myLibrary[n].status == false){
+    readStuTarget.classList.remove('readed');
   }
 }
 
@@ -144,16 +135,15 @@ function modalCtrl (){
   modal.classList.toggle('active');             
 }
 
- modalOpen.addEventListener("click", modalCtrl )
- window.addEventListener("click", function(event) {
-  if (event.target == modal || event.target == modalWrapper ) {
-    modal.classList.toggle('active');     
-  }
+
+modalOpen.addEventListener("click", modalCtrl )
+window.addEventListener("click", function(event) {
+if (event.target == modal || event.target == modalWrapper ) {
+  modal.classList.toggle('active');     
+}
 });
 
 AddBtn.addEventListener( "click", getBook );
 
-for(let i = 0; i < myLibrary.length; i++ ){
-  n = i;
-  showBook();
-}
+intilize()
+
